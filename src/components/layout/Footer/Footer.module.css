@@ -1,0 +1,17 @@
+.container {
+    width: 100%;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.content > div:last-of-type > p {
+    margin-top: 1em;
+    font-size: small;
+    color: rgba(255, 255, 255, 0.383);
+}

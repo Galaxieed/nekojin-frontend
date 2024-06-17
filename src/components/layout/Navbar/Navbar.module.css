@@ -10,18 +10,6 @@
     padding: 0 5vw;
 }
 
-/* LOGO */
-.navbar > div {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.navbar > div > img {
-    border-radius: 50%;
-    height: 35px;
-}
-
 /* ACTIONS */
 .navbar > nav {
     height: inherit;
