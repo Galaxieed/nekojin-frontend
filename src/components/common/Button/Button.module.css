@@ -1,0 +1,12 @@
+button {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.primaryButton {
+    background-color: orange;
+    color: black;
+    font-weight: 700;
+}

@@ -1,0 +1,70 @@
+.container {
+    height: 30vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 5vw;
+}
+
+.details {
+    flex: 5;
+    margin-left: 5vw;
+    max-width: 567px;
+    z-index: 0;
+}
+
+.details::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+
+    background: linear-gradient(to right, black, transparent 90%, black);
+    z-index: -1;
+}
+
+.details :is(h1, h5) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+.details h1 {
+    -webkit-line-clamp: 2;
+    font-size: xx-large;
+}
+.details h5 {
+    -webkit-line-clamp: 3;
+}
+
+.image {
+    flex: 7;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    z-index: 0;
+}
+
+
+.fade-enter {
+    opacity: 0;
+}
+.fade-enter-active {
+    opacity: 1;
+    transition: opacity 500ms;
+}
+.fade-exit {
+    opacity: 1;
+}
+.fade-exit-active {
+    opacity: 0;
+    transition: opacity 500ms;
+}
