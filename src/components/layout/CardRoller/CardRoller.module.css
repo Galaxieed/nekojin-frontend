@@ -8,46 +8,23 @@
     scroll-behavior: smooth;
 }
 
-.card {
-    display: inline-block;
-    text-align: center;
-    flex-direction: column;
-    margin-right: 15px;
-}
-
-.card img {
-    aspect-ratio: 5/7;
-    width: 12vw;
-}
-
-.card h4 {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 12vw;
-}
-
-.leftArrow {
+.leftArrow, .rightArrow {
     background-color: rgba(0, 0, 0, 0.1);
     outline: 0;
     border: none;
 
     position: absolute;
     top: 0;
-    left: 0;
-    height: 100%;
+    height: calc(100% - 1.5em - 15px);
     width: 1vw;
+    z-index: 1;
+}
+.leftArrow {
+    left: 0;
 }
 
 .rightArrow {
-    background-color: rgba(0, 0, 0, 0.1);
-    outline: 0;
-    border: none;
-
-    position: absolute;
-    top: 0;
     right: 0;
-    height: 100%;
-    width: 1vw;
 }
 
 .rightArrow:hover, .leftArrow:hover {

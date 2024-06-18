@@ -1,0 +1,41 @@
+.card {
+    display: inline-block;
+    text-align: center;
+    flex-direction: column;
+    margin-right: 20px;
+    position: relative;
+}
+
+.card img {
+    aspect-ratio: 5/7;
+    object-fit: cover;
+    width: 12vw;
+}
+
+.card h4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 12vw;
+    line-height: 1.5em;
+}
+
+.cardHover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 1vw;
+    overflow: hidden;
+    background-color: rgba(255, 166, 0, 1);
+    z-index: 0;
+}
+
+.cardHover p {
+    width: 100%;
+    text-wrap: wrap;
+    text-align: start;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: black;
+}

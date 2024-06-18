@@ -2,6 +2,7 @@ import style from './CardRoller.module.css';
 import ArrowLeft from '@mui/icons-material/ArrowLeft';
 import ArrowRight from '@mui/icons-material/ArrowRight';
 import { useRef } from 'react';
+import MyCard from '../../common/Card/Card';
 
 export default function CardRoller() {
     var carouselRef  = useRef(null);
@@ -26,10 +27,13 @@ export default function CardRoller() {
             <button className={style.leftArrow} onClick={scrollLeft}><ArrowLeft /></button>
             <div className={style.carousel} ref={carouselRef}>
                 {url.map((e, index) => 
-                    <div key={index} className={style.card}>
-                        <img src={e} alt="" />
-                        <h4>Kyoukai no Kanata</h4>
-                    </div>
+                    <MyCard key={index} anime={
+                        {
+                            title: 'Kyoukai no Kanata',
+                            image: e,
+                            sypnosis: 'Kyoukai no Kanata is a Japanese manga series written and illustrated by 20th-century artist',
+                        }
+                    }/>
                 )}
             </div>
             <button className={style.rightArrow} onClick={scrollRight}><ArrowRight /></button>
