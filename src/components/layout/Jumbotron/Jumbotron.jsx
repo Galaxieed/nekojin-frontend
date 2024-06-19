@@ -6,9 +6,7 @@ import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
-
 export default function MyJumbotron() {
-
     const theme = useTheme();
     const mdBreakPoint = useMediaQuery(theme.breakpoints.up('md'));
     const smBreakPoint = useMediaQuery(theme.breakpoints.up('sm'));
@@ -53,7 +51,7 @@ export default function MyJumbotron() {
 
             { smBreakPoint && <div className={style.image} style={{backgroundImage: `url(${url[currentSlide].image})`}}></div>}
 
-       </div>
+        </div>
     )
 }
 
