@@ -1,7 +1,62 @@
 import { useEffect, useState } from 'react';
 import MyButton from '../../common/Button/Button';
 import style from './Jumbotron.module.css';
-import PlayIcon from '@mui/icons-material/PlayArrow'
+import PlayIcon from '@mui/icons-material/PlayArrow';
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+
+
+
+export default function MyJumbotron() {
+
+    const theme = useTheme();
+    const mdBreakPoint = useMediaQuery(theme.breakpoints.up('md'));
+    const smBreakPoint = useMediaQuery(theme.breakpoints.up('sm'));
+
+    const [currentSlide, setSlide] = useState(0);
+    
+    const nextSlide = () => {
+        setSlide(currentSlide === url.length - 1? 0 : currentSlide + 1);
+    }
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            nextSlide();
+        }, 5000);
+        return () => clearInterval(interval);
+    })
+
+    const smContainerStyle = {
+        height: "500px",
+        alignItems: "flex-end",
+    }
+
+    const smDetailsStyle = {
+        background: 'linear-gradient(transparent, black)',
+        marginLeft: "0",
+        paddingTop: "100px",
+    }
+
+    return (
+        <div className={`${style.container}`} style={{
+            backgroundImage: `url(${url[currentSlide].image})`,
+            ...!smBreakPoint && smContainerStyle
+        }}>
+
+            <div className={style.details} style={!smBreakPoint ? smDetailsStyle : undefined}>
+                <h1>{url[currentSlide].title}</h1>
+                { mdBreakPoint && <h5>{url[currentSlide].sypnosis}</h5>}
+                { !smBreakPoint && <h5>{url[currentSlide].sypnosis}</h5>}
+                <br />
+                <MyButton isPrimary={true} icon={(<PlayIcon />)} text='Watch' onClick={()=>{}} />
+            </div>
+
+            { smBreakPoint && <div className={style.image} style={{backgroundImage: `url(${url[currentSlide].image})`}}></div>}
+
+       </div>
+    )
+}
+
 
 let url = [
     {
@@ -20,36 +75,3 @@ let url = [
         image: 'https://imgs.search.brave.com/t6wInYTCdyhQzYCvIRK70LSpiR98oAGAO6uK6ChLDf4/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1tWTNaRGRp/TnpndE1EYzVOUzAw/WVRVeUxUZ3lZVGN0/TlRoaVlUaGlNelJs/TkdGaVhrRXlYa0Zx/Y0dkZVFYVnlNelV3/Tnpnek56Z0AuanBn'
     }
 ];
-
-export default function MyJumbotron() {
-
-    const [currentSlide, setSlide] = useState(0);
-    
-    const nextSlide = () => {
-        setSlide(currentSlide === url.length - 1? 0 : currentSlide + 1);
-    }
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            nextSlide();
-        }, 5000);
-        return () => clearInterval(interval);
-    })
-
-
-    return (
-        <div className={`${style.container}`} style={{
-            backgroundImage: `url(${url[currentSlide].image})`}}>
-
-            <div className={style.details}>
-                <h1>{url[currentSlide].title}</h1>
-                <h5>{url[currentSlide].sypnosis}</h5>
-                <br />
-                <MyButton isPrimary={true} icon={(<PlayIcon />)} text='Watch' onClick={()=>{}} />
-            </div>
-
-            <div className={style.image} style={{backgroundImage: `url(${url[currentSlide].image})`}}></div>
-
-       </div>
-    )
-}
