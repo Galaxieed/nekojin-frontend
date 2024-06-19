@@ -1,37 +1,59 @@
 import style from './CardRoller.module.css';
 import ArrowLeft from '@mui/icons-material/ArrowLeft';
 import ArrowRight from '@mui/icons-material/ArrowRight';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import MyCard from '../../common/Card/Card';
+import PropTypes from 'prop-types'
 
-export default function CardRoller() {
+export default function CardRoller(props) {
     var carouselRef  = useRef(null);
+    const [scrollAmount, setScrollAmount] = useState(0);
 
+    useEffect(() => {
+        // Calculate the scroll amount when the component mounts
+        if (carouselRef.current) {
+            setScrollAmount(carouselRef.current.clientWidth * 0.8);
+        }
+        
+        // Adjust scroll amount when the window is resized
+        const handleResize = () => {
+            if (carouselRef.current) {
+                setScrollAmount(carouselRef.current.clientWidth * 0.8);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        // Clean up the event listener
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
     const scrollLeft = () => {
         carouselRef.current.scrollBy({
-            left: -246,  
+            left: -scrollAmount,  
             behavior: 'smooth',
         });
     };
 
     const scrollRight = () => {
         carouselRef.current.scrollBy({
-            left: 246,  
+            left: scrollAmount,  
             behavior: 'smooth',
         });
     };
+    console.log(props.animeList.results);
 
     return (
-        // This is Horizontal Scrolling
         <div className={style.container}>
             <button className={style.leftArrow} onClick={scrollLeft}><ArrowLeft /></button>
             <div className={style.carousel} ref={carouselRef}>
-                {url.map((e, index) => 
+                {props.animeList.results != undefined && props.animeList.results.map((anime, index) => 
                     <MyCard key={index} anime={
                         {
-                            title: 'Kyoukai no Kanata',
-                            image: e,
-                            sypnosis: 'Kyoukai no Kanata is a Japanese manga series written and illustrated by 20th-century artist',
+                            title: anime.title,
+                            image: anime.image,
+                            sypnosis: `${anime.title} Episodes: ${anime.episodeNumber}`,
                         }
                     }/>
                 )}
@@ -41,24 +63,6 @@ export default function CardRoller() {
     )
 }
 
-let url = [
-    'https://imgs.search.brave.com/wbkbnrTVUYHjCLH7IILUFRiI7IUALaDm6Ljs32Bm5JA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1URTNOalJt/WTJNdE1tSXlNaTAw/WWpVekxUaGlaR0V0/TldaaVpETTJORFZq/TkRnM1hrRXlYa0Zx/Y0dkZVFYVnlNemd4/T0RNNE5qTUAuanBn',
-    'https://m.media-amazon.com/images/M/MV5BNmQ1Y2FiMjYtZDAwNy00MzM1LThiOWMtZGE2ZWJlZTBlMGI2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg',
-    'https://upload.wikimedia.org/wikipedia/en/2/2f/ReCreators_Main_Visual.jpeg',
-    'https://imgs.search.brave.com/wbkbnrTVUYHjCLH7IILUFRiI7IUALaDm6Ljs32Bm5JA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1URTNOalJt/WTJNdE1tSXlNaTAw/WWpVekxUaGlaR0V0/TldaaVpETTJORFZq/TkRnM1hrRXlYa0Zx/Y0dkZVFYVnlNemd4/T0RNNE5qTUAuanBn',
-    'https://m.media-amazon.com/images/M/MV5BNmQ1Y2FiMjYtZDAwNy00MzM1LThiOWMtZGE2ZWJlZTBlMGI2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg',
-    'https://upload.wikimedia.org/wikipedia/en/2/2f/ReCreators_Main_Visual.jpeg',
-    'https://imgs.search.brave.com/wbkbnrTVUYHjCLH7IILUFRiI7IUALaDm6Ljs32Bm5JA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1URTNOalJt/WTJNdE1tSXlNaTAw/WWpVekxUaGlaR0V0/TldaaVpETTJORFZq/TkRnM1hrRXlYa0Zx/Y0dkZVFYVnlNemd4/T0RNNE5qTUAuanBn',
-    'https://m.media-amazon.com/images/M/MV5BNmQ1Y2FiMjYtZDAwNy00MzM1LThiOWMtZGE2ZWJlZTBlMGI2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg',
-    'https://upload.wikimedia.org/wikipedia/en/2/2f/ReCreators_Main_Visual.jpeg',
-    'https://imgs.search.brave.com/wbkbnrTVUYHjCLH7IILUFRiI7IUALaDm6Ljs32Bm5JA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1URTNOalJt/WTJNdE1tSXlNaTAw/WWpVekxUaGlaR0V0/TldaaVpETTJORFZq/TkRnM1hrRXlYa0Zx/Y0dkZVFYVnlNemd4/T0RNNE5qTUAuanBn',
-    'https://m.media-amazon.com/images/M/MV5BNmQ1Y2FiMjYtZDAwNy00MzM1LThiOWMtZGE2ZWJlZTBlMGI2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg',
-    'https://upload.wikimedia.org/wikipedia/en/2/2f/ReCreators_Main_Visual.jpeg',
-    'https://imgs.search.brave.com/wbkbnrTVUYHjCLH7IILUFRiI7IUALaDm6Ljs32Bm5JA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1URTNOalJt/WTJNdE1tSXlNaTAw/WWpVekxUaGlaR0V0/TldaaVpETTJORFZq/TkRnM1hrRXlYa0Zx/Y0dkZVFYVnlNemd4/T0RNNE5qTUAuanBn',
-    'https://m.media-amazon.com/images/M/MV5BNmQ1Y2FiMjYtZDAwNy00MzM1LThiOWMtZGE2ZWJlZTBlMGI2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg',
-    'https://upload.wikimedia.org/wikipedia/en/2/2f/ReCreators_Main_Visual.jpeg',
-    'https://imgs.search.brave.com/wbkbnrTVUYHjCLH7IILUFRiI7IUALaDm6Ljs32Bm5JA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1URTNOalJt/WTJNdE1tSXlNaTAw/WWpVekxUaGlaR0V0/TldaaVpETTJORFZq/TkRnM1hrRXlYa0Zx/Y0dkZVFYVnlNemd4/T0RNNE5qTUAuanBn',
-    'https://m.media-amazon.com/images/M/MV5BNmQ1Y2FiMjYtZDAwNy00MzM1LThiOWMtZGE2ZWJlZTBlMGI2XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg',
-    'https://upload.wikimedia.org/wikipedia/en/2/2f/ReCreators_Main_Visual.jpeg',
-    'https://imgs.search.brave.com/wbkbnrTVUYHjCLH7IILUFRiI7IUALaDm6Ljs32Bm5JA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk1URTNOalJt/WTJNdE1tSXlNaTAw/WWpVekxUaGlaR0V0/TldaaVpETTJORFZq/TkRnM1hrRXlYa0Zx/Y0dkZVFYVnlNemd4/T0RNNE5qTUAuanBn',
-]
+CardRoller.propTypes = {
+    animeList: PropTypes.any.isRequired,
+}

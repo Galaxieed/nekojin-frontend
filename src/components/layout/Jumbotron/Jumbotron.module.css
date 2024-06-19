@@ -53,10 +53,11 @@
 
 .image {
     flex: 7;
-    background-size: contain;
+    background-size: 20vw 100% ;
     background-position: center;
     background-repeat: no-repeat;
     height: 100%;
+    width: 6vw;
     z-index: 0;
 }
 

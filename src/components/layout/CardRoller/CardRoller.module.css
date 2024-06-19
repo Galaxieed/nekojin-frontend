@@ -15,7 +15,7 @@
 
     position: absolute;
     top: 0;
-    height: calc(100% - 1.5em - 15px);
+    height: calc(100% - 1.5em - 10px);
     width: 1vw;
     z-index: 1;
 }

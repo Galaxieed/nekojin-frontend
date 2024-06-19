@@ -3,7 +3,12 @@
     text-align: center;
     flex-direction: column;
     margin-right: 20px;
+}
+
+.cardImage {
+    display: flex;
     position: relative;
+
 }
 
 .card img {
@@ -11,6 +16,7 @@
     object-fit: cover;
     min-width: 150px;
     width: 12vw;
+    height: inherit;
 }
 
 .card h4 {

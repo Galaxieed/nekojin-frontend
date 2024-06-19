@@ -1,0 +1,20 @@
+.container {
+    min-height: calc(100vh - 100px);
+    padding: 50px 0;
+}
+
+.searchContainer {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.searchContainer input {
+    flex-grow: 1;
+    padding: 0 10px;
+}
+
+.searchContainer button {
+    background-color: orange;
+    gap: 15px;
+}

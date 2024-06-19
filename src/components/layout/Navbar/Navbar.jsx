@@ -1,26 +1,26 @@
 import style from './Navbar.module.css';
-import UserIcon from '@mui/icons-material/PersonOutline'
 import BookmarkIcon from '@mui/icons-material/BookmarkBorder'
 import SearchIcon from '@mui/icons-material/SearchOutlined'
 import MyLogo from '../../ui/Logo/Logo'
+import { useNavigate } from 'react-router-dom'
 
 export default function NavBar() {
+    const navigate = useNavigate();
+
     return (
         <div className={style.navbar}>
-            <div>
+            <div onClick={()=>navigate('/')}>
                 <MyLogo />
             </div>
             <nav>
                 <ul>
-                    <li>
+                    <li onClick={()=>navigate('/search')}>
                         <SearchIcon />
                     </li>
-                    <li>
+                    <li onClick={()=>navigate('/bookmark')}>
                         <BookmarkIcon />
                     </li>
-                    <li>
-                        <UserIcon/>
-                    </li>
+                    
                 </ul>
             </nav>
         </div>
