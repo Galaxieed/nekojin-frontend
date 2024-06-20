@@ -12,8 +12,8 @@ async function getRecentEpisodes() {
     return results;
 }
 
-async function getAnimeInfo({ url }) {
-    const results = await gogoanime.fetchAnimeInfo(url);
+async function getAnimeInfo(id) {
+    const results = await gogoanime.fetchAnimeInfo(id);
     return results;
 }
 

@@ -1,14 +1,12 @@
 .card {
     display: inline-block;
     text-align: center;
-    flex-direction: column;
     margin-right: 20px;
 }
 
 .cardImage {
     display: flex;
     position: relative;
-
 }
 
 .card img {
@@ -22,6 +20,10 @@
 .card h4 {
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    text-wrap: wrap;
     width: 12vw;
     min-width: 150px;
     line-height: 1.5em;
@@ -39,11 +41,14 @@
     z-index: 0;
 }
 
-.cardHover p {
+.cardHover h5 {
     width: 100%;
-    text-wrap: wrap;
+    text-wrap: balance;
     text-align: start;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 9;
     color: black;
 }

@@ -55,7 +55,7 @@ export default function CardRoller(props) {
                             image: anime.image,
                             sypnosis: `${anime.title} Episodes: ${anime.episodeNumber}`,
                         }
-                    }/>
+                    } animeId={anime.id}/>
                 )}
             </div>
             <button className={style.rightArrow} onClick={scrollRight}><ArrowRight /></button>

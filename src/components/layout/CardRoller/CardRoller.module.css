@@ -6,6 +6,8 @@
     white-space: nowrap;
     overflow: hidden;
     scroll-behavior: smooth;
+    display: flex;
+    align-items: start;
 }
 
 .leftArrow, .rightArrow {
