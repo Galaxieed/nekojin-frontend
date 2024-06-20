@@ -42,20 +42,13 @@ export default function CardRoller(props) {
             behavior: 'smooth',
         });
     };
-    console.log(props.animeList.results);
 
     return (
         <div className={style.container}>
             <button className={style.leftArrow} onClick={scrollLeft}><ArrowLeft /></button>
             <div className={style.carousel} ref={carouselRef}>
-                {props.animeList.results != undefined && props.animeList.results.map((anime, index) => 
-                    <MyCard key={index} anime={
-                        {
-                            title: anime.title,
-                            image: anime.image,
-                            sypnosis: `${anime.title} Episodes: ${anime.episodeNumber}`,
-                        }
-                    } animeId={anime.id}/>
+                {props.animeList != undefined && props.animeList.map((anime, index) => 
+                    <MyCard key={index} anime={anime}/>
                 )}
             </div>
             <button className={style.rightArrow} onClick={scrollRight}><ArrowRight /></button>

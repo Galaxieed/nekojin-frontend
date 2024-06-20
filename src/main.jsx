@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Root from './root'
+import Root, { HomeLoader as homeLoader } from './root'
 import ErrorPage from './pages/ErrorPage/Errorpage'
 import MyHome from './pages/Home/Home'
 import Search from './pages/Search/Search'
@@ -16,6 +16,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        loader: homeLoader,
         element: <MyHome />,
       }, {
         path: '/search',

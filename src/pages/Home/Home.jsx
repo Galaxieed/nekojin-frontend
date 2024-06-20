@@ -1,26 +1,13 @@
+import { useLoaderData } from 'react-router-dom';
 import CardRoller from '../../components/layout/CardRoller/CardRoller';
 import MyJumbotron from '../../components/layout/Jumbotron/Jumbotron';
-import { getTopAnimeAiring, getRecentEpisodes } from '../../services/apicalls';
 import style from './Home.module.css';
-import { useEffect, useRef, useState } from "react"
 export default function MyHome() {
-    const [topAnimeAiring, setTopAnimeAiring] = useState([]);
-    const [recentEpisodes, setRecentEpisodes] = useState([]);
-    let isLoading = useRef(true);
-
-    useEffect(()=>{
-        async function fetchData() {
-            setTopAnimeAiring(await getTopAnimeAiring());
-            setRecentEpisodes(await getRecentEpisodes());
-        }
-        fetchData().then(()=>{isLoading.current = false;});
-    },[])
-
+    const {recentEpisodes, topAnimeAiring} = useLoaderData();
     return (
-        isLoading.current ? <div>Loading</div>:
         <div className={style.home}>
             <section>
-                <MyJumbotron />
+                <MyJumbotron animeList={topAnimeAiring}/>
             </section>
 
             <section>
