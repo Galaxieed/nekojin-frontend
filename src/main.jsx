@@ -18,6 +18,7 @@ const router = createBrowserRouter([
         path: '/',
         loader: homeLoader,
         element: <MyHome />,
+        
       }, {
         path: '/search',
         element: <Search />,

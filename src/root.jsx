@@ -1,9 +1,10 @@
 import NavBar from "./components/layout/Navbar/Navbar"
 import Footer from "./components/layout/Footer/Footer"
-import { Outlet } from "react-router-dom"
+import { Outlet, useNavigation } from "react-router-dom"
 import { getRecentEpisodes, getTopAnimeAiring } from "./services/apicalls"
-
+import MyLoader from "./components/common/Loader/Loader"
 export default function Root() {
+    const navigation = useNavigation();
     
     return (
         <>
@@ -12,6 +13,7 @@ export default function Root() {
             </header>
 
             <main>
+                {navigation.state === "loading" && <MyLoader />}
                 <Outlet />
             </main>
             
