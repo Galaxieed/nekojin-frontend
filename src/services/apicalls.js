@@ -30,8 +30,8 @@ async function getAnimeList() {
     const results = await gogoanime.fetchAnimeList();
     return results;
 }
-async function getSearchedAnime(searchValue) {
-    const results = await gogoanime.search(searchValue);
+async function getSearchedAnime(searchValue, page) {
+    const results = await gogoanime.search(searchValue, page ?? 1);
     return results;
 }
 

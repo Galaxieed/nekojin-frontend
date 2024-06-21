@@ -9,7 +9,7 @@ export default function MyCard(props) {
         <div className={style.card}>
             <div className={style.cardImage} onMouseEnter={() => onHover(true)} onMouseLeave={() => onHover(false)}>
                 <img src={props.anime.image} alt=""/>
-                {isHovered && <div className={style.cardHover}>
+                {props.anime.description != undefined && isHovered && <div className={style.cardHover}>
                     <h5>{props.anime.description == "" ? "It has no description" : props.anime.description}</h5>
                 </div> }
             </div>

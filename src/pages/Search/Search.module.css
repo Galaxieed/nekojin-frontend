@@ -1,9 +1,11 @@
 .container {
     min-height: calc(100vh - 100px);
     padding: 50px 0;
+    display: flex;
+    flex-direction: column;
 }
 
-.searchContainer {
+.searchContainer form {
     display: flex;
     gap: 10px;
     width: 100%;
@@ -17,4 +19,16 @@
 .searchContainer button {
     background-color: orange;
     gap: 15px;
+}
+
+.resultsContainer {
+    flex-grow: 1;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
 }
