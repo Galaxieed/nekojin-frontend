@@ -6,9 +6,9 @@
 
     position: relative;
     display: flex;
-    align-items: center;
+    align-items: end;
     gap: 5vw;
-    
+
     transition: all ease-in-out 1s;
 }
 
@@ -19,6 +19,7 @@
 .details {
     flex: 5;
     margin-left: 5vw;
+    margin-bottom: 4vw;
     max-width: 567px;
     z-index: 0;
 }

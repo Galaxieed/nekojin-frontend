@@ -32,6 +32,7 @@ export default function MyJumbotron(props) {
     const smDetailsStyle = {
         background: 'linear-gradient(transparent, black)',
         marginLeft: "0",
+        marginBottom: "0",
         paddingTop: "100px",
     }
 
