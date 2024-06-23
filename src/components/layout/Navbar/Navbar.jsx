@@ -17,7 +17,7 @@ export default function NavBar() {
                     <li onClick={()=>navigate('/search')}>
                         <SearchIcon />
                     </li>
-                    <li onClick={()=>navigate('/bookmark')}>
+                    <li onClick={()=>navigate('/watch')}>
                         <BookmarkIcon />
                     </li>
                     

@@ -1,0 +1,184 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+}
+
+.stream {
+    display: flex;
+    gap: 20px;
+    height: 40vw;
+}
+
+.episodeList {
+    min-width: 200px;
+    width: 15vw;
+    overflow: auto;
+    padding: 10px;
+
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.episodeList::-webkit-scrollbar {
+    width: 5px;
+    float: left;
+}
+
+.episodeList::-webkit-scrollbar-thumb {
+    background-color: orange; 
+    border-radius: 5px;
+  }
+.episodeList::-webkit-scrollbar-thumb:hover {
+    background-color: orangered;
+}
+
+.episodeList > li {
+    list-style: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.episodeList > li::before {
+    content: "Episode ";
+}
+
+.episodeList > li:nth-of-type(even){
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.episodeList > li:hover {
+    background-color: white;
+    color: black;
+}
+
+.episodeList > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid white;
+    padding: 10px 0;
+} 
+
+.active {
+    color: orange;
+}
+
+.videoContainer {
+    flex-grow: 1;
+    background-color: rgba(128, 128, 128, 0.1);
+}
+
+.animeDetailsContainer {
+    display: flex;
+    justify-content: start;
+}
+
+.animeDetailsContainer > img {
+    max-height: 25vw;
+}
+
+.details {
+    padding: 0 2vw;
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.details > h5:first-of-type {
+    margin-top: -10px;
+}
+
+.details > h5:nth-of-type(3) > span {
+    color: green;
+}
+
+
+.details > h5:nth-of-type(3) > span.ongoing {
+    color: orange;
+}
+
+
+.capsulesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 5px;
+}
+/* DROPDOWN */
+.customSelect {
+    padding: 5px 15px;
+    border: 2px solid #ccc;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 4px;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    appearance: none; /* Remove default arrow */
+    -webkit-appearance: none; /* Remove default arrow in Safari */
+    -moz-appearance: none; /* Remove default arrow in Firefox */
+}
+
+.customSelect:focus {
+    border-color: orange;
+    box-shadow: 0 0 5px rgba(255, 166, 0, 0.5);
+    outline: none;
+}
+
+.customSelect::after {
+    content: '\25BC'; /* Down arrow */
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Wrapper to position the arrow */
+.select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+/* Custom styles for the select options */
+.customSelect option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+}
+
+@media (max-width: 600px) {
+    .stream {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+    }
+
+    .videoContainer {
+        height: 100%;
+        aspect-ratio: 16/9;
+    }
+    
+    .episodeList {
+        order: 1;
+        padding: 10px;
+        background-color: rgba(255, 255, 255, 0.1);
+
+        display: grid;
+        width: 100%;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+    .episodeList > div {
+        grid-column: 1 / -1;
+    } 
+
+    .episodeList > li::before {
+        content: "";
+    }
+}

@@ -40,7 +40,7 @@ async function getEpisodeServers(episodeId) {
     return results;
 }
 
-async function getEpisodeSources({ episodeId }) {
+async function getEpisodeSources(episodeId) {
     const results = await gogoanime.fetchEpisodeSources(episodeId);
     return results;
 }

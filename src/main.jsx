@@ -7,6 +7,8 @@ import ErrorPage from './pages/ErrorPage/Errorpage'
 import MyHome from './pages/Home/Home'
 import Search from './pages/Search/Search'
 import Watch from './pages/Watch/Watch'
+import { loader as watchLoader } from './pages/Watch/WatchLoader'
+import MyVideoPlayer from './components/ui/VideoPlayer/VideoPlayer'
 
 const router = createBrowserRouter([
   {
@@ -15,16 +17,23 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
+        index: true,
         loader: homeLoader,
         element: <MyHome />,
         
       }, {
-        path: '/search',
+        path: 'search',
         element: <Search />,
       }, {
-        path: '/watch',
-        element: <Watch />
+        path: 'watch/:animeid',
+        element: <Watch />,
+        loader: watchLoader,
+        children: [
+          {
+            path: ':episodeid',
+            element: <MyVideoPlayer />,
+          }
+        ]
       }
     ]
   }

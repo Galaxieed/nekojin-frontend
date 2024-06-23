@@ -13,7 +13,7 @@ export default function Root() {
             </header>
 
             <main>
-                {navigation.state === "loading" && <MyLoader />}
+                {navigation.state === "loading" ? <MyLoader /> : window.scroll(0, 0)}
                 <Outlet />
             </main>
             

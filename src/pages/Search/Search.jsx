@@ -33,13 +33,11 @@ export default function Search() {
         if (control === "prev" && page > 1) setPage((prev)=> prev - 1)
     }
 
-
     useEffect(() => {
         if (searchValue && searchValue != "") {
             onLoading(true);
             getSearchedAnime(searchValue, page).then((result) => {
                 setAnimeResults(result.results);
-                console.log(result)
                 hasNextPage.current = result.hasNextPage;
                 onLoading(false);
                 window.scroll(0, 0);
