@@ -20,7 +20,7 @@ export default function Watch() {
             navigate(currentEp);
             return;
         }
-        
+
         if (location.pathname.split('/').length == 3 
             || location.pathname.split('/')[3] == "" 
             || !hasEpisodeId(location.pathname.split('/')[3])) {
@@ -31,6 +31,7 @@ export default function Watch() {
             setEp(currentEp);
         }
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentEp]);
 
 
